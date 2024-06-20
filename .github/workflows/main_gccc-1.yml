@@ -12,10 +12,10 @@ jobs:
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v4  # Actualizat la versiunea 4 pentru compatibilitate
+        uses: actions/checkout@v4  # Actualizat la versiunea 4
 
       - name: Set up Java version
-        uses: actions/setup-java@v3  # Actualizat la versiunea 3
+        uses: actions/setup-java@v4  # Actualizat la versiunea 4, compatibilă cu Node.js 20
         with:
           distribution: 'temurin'  # Recomandat pentru JDK
           java-version: '17'
@@ -24,7 +24,7 @@ jobs:
         run: mvn clean install
 
       - name: Upload artifact for deployment job
-        uses: actions/upload-artifact@v3  # Actualizat la versiunea 3
+        uses: actions/upload-artifact@v4  # Actualizat la versiunea 4
         with:
           name: java-app
           path: '${{ github.workspace }}/target/*.jar'
@@ -40,7 +40,7 @@ jobs:
 
     steps:
       - name: Download artifact from build job
-        uses: actions/download-artifact@v3  # Actualizat la versiunea 3
+        uses: actions/download-artifact@v4  # Actualizat la versiunea 4
         with:
           name: java-app
 
